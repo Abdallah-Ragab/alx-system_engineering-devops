@@ -1,3 +1,18 @@
+# This Puppet manifest installs and configures Nginx web server on a Linux system.
+# It performs the following steps:
+# 1. Adds the stable version of Nginx repository.
+# 2. Updates the software packages list.
+# 3. Installs Nginx.
+# 4. Allows HTTP traffic through the firewall.
+# 5. Changes the permissions of the /var/www folder.
+# 6. Creates an index.html file in the /var/www/html directory.
+# 7. Creates a 404.html file in the /var/www/html directory.
+# 8. Configures the default Nginx server block to serve static files and handle 404 errors.
+# 9. Restarts the Nginx service.
+# 10. Ensures that the Nginx service is running.
+
+# Note: This Puppet manifest assumes that the system is running Ubuntu or a similar Debian-based distribution.
+
 # add stable version of nginx
 exec { 'add nginx stable repo':
   command => 'sudo add-apt-repository ppa:nginx/stable',
@@ -59,7 +74,7 @@ file { 'Nginx default config file':
         location  /404.html {
             internal;
         }
-        
+
         if (\$request_filename ~ redirect_me){
             rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         }

@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
-# Install nginx on your web-01 server
+
+# This script installs and configures Nginx web server, sets up a custom 404 page,
+# and adds a redirect rule to the default Nginx configuration.
+
 apt-get -y update
 apt-get -y install nginx
+
+# Create a basic "Hello World!" index.html file
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# Add a redirect rule to the default Nginx configuration
 sed -i "46i rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+
+# Create a custom 404.html file
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html > /dev/null
+
+# Set up the custom 404 page in the Nginx configuration
 sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
+
+# Restart the Nginx service to apply the changes
 service nginx restart
