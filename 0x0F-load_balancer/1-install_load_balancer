@@ -6,9 +6,11 @@ balancer="\
 frontend haproxy_balancer
     bind *:80
     mode http
+    no option h1-case-adjust-bogus-client
     default_backend webservers
 
 backend webservers
+    no option h1-case-adjust-bogus-server
     balance roundrobin
     server 486690-web-01 52.86.122.88:80 check
     server 486690-web-02 18.235.249.198:80 check
