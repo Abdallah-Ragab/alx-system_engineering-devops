@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script installs and configures Nginx web server, sets up a custom 404 page,
 # and adds a redirect rule to the default Nginx configuration.
 

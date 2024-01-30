@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script installs and configures the Nginx web server.
 # It updates the package list, installs Nginx, creates a basic HTML file,
 # and starts the Nginx service.

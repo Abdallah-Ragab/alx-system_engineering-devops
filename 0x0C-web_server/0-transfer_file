@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script transfers a file to a remote server using SCP.
 # It requires four arguments:
 #   - PATH_TO_FILE: the local path to the file to be transferred
