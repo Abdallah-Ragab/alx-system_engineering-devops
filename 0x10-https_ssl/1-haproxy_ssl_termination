@@ -36,7 +36,6 @@ defaults
 frontend ragab.tech-http-frontend
     bind *:80
     bind *:443 ssl crt /etc/letsencrypt/live/ragab.tech/fullchain.pem
-    redirect scheme https code 301 if !{ ssl_fc }
     http-request set-header X-Forwarded-Proto https
     default_backend webservers
 
